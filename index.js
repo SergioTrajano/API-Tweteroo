@@ -13,7 +13,14 @@ server.post('/sign-up', (request, response) => {
     const user = request.body;
     users.push(user);
     response.send('OK');
-})
+});
+
+server.post('/tweets', (request, response) => {
+    const tweet = request.body;
+    tweets.push(tweet);
+    response.send('OK');
+});
+
 
 
 
