@@ -15,6 +15,12 @@ server.post('/sign-up', (request, response) => {
     response.send('OK');
 });
 
+server.get('/tweets', (request, response) => {
+    const lastTenTweets = tweets.slice(-10);
+    lastTenTweets.forEach( tweet => tweet.avatar = users.find( user => user.username === tweet.username).avatar);
+    response.send(lastTenTweets.reverse());
+});
+
 server.post('/tweets', (request, response) => {
     const tweet = request.body;
     tweets.push(tweet);
@@ -26,4 +32,5 @@ server.post('/tweets', (request, response) => {
 
 
 
-server.listen(5000, console('Servidor no ar!'));
+
+server.listen(5000, console.log('Servidor no ar!'));
